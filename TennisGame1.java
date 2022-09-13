@@ -26,6 +26,12 @@ public class TennisGame1 implements TennisGame {
         return player1_score - player2_score >= 2;
     }
 
+    private String getScore(int score) {
+        String[] name = {"Love", "Fifteen", "Thirty", "Forty"};
+
+        return name[score];
+    }
+
     public TennisGame1() {
 
     }
@@ -45,22 +51,10 @@ public class TennisGame1 implements TennisGame {
         int tempScore=0;
         if (sameScore())
         {
-            switch (player1_score)
-            {
-                case 0:
-                    score = "Love-All";
-                    break;
-                case 1:
-                    score = "Fifteen-All";
-                    break;
-                case 2:
-                    score = "Thirty-All";
-                    break;
-                default:
-                    score = "Deuce";
-                    break;
-
-            }
+            if (player1_score > 2)
+                score = "Deuce";
+            else
+                score = getScore(player1_score) + "-All";
         }
         else if (above4Score())
         {
@@ -79,26 +73,7 @@ public class TennisGame1 implements TennisGame {
         }
         else
         {
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = player1_score;
-                else { score+="-"; tempScore = player2_score;}
-                switch(tempScore)
-                {
-                    case 0:
-                        score+="Love";
-                        break;
-                    case 1:
-                        score+="Fifteen";
-                        break;
-                    case 2:
-                        score+="Thirty";
-                        break;
-                    case 3:
-                        score+="Forty";
-                        break;
-                }
-            }
+            score = getScore(player1_score) + "-" + getScore(player2_score);
         }
         return score;
     }
