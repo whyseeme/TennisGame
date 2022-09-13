@@ -32,6 +32,35 @@ public class TennisGame1 implements TennisGame {
         return name[score];
     }
 
+    private String scoreForTie() {
+        if (player1_score > 2)
+            return "Deuce";
+        else
+            return getScore(player1_score) + "-All";
+    }
+
+    private String scoreForAtLeastOneAbove4() {
+        String score;
+
+        if (advantageP1())
+            score ="Advantage player1";
+        else if (advantageP2())
+            score ="Advantage player2";
+        else if (winP1()) {
+            score = "Win for player1";
+            isEnd = true;
+        }
+        else {
+            score ="Win for player2";
+            isEnd = true;
+        }
+
+        return score;
+    }
+    private String scoreForBothBelow4() {
+        return getScore(player1_score) + "-" + getScore(player2_score);
+    }
+
     public TennisGame1() {
 
     }
@@ -49,33 +78,13 @@ public class TennisGame1 implements TennisGame {
     public String getLiteralScore() {
         String score = "";
         int tempScore=0;
+
         if (sameScore())
-        {
-            if (player1_score > 2)
-                score = "Deuce";
-            else
-                score = getScore(player1_score) + "-All";
-        }
+            return scoreForTie();
         else if (above4Score())
-        {
-            if (advantageP1())
-                score ="Advantage player1";
-            else if (advantageP2())
-                score ="Advantage player2";
-            else if (winP1()) {
-                score = "Win for player1";
-                isEnd = true;
-            }
-            else {
-                score ="Win for player2";
-                isEnd = true;
-            }
-        }
+            return scoreForAtLeastOneAbove4();
         else
-        {
-            score = getScore(player1_score) + "-" + getScore(player2_score);
-        }
-        return score;
+            return scoreForBothBelow4();
     }
 
     @Override
