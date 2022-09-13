@@ -6,6 +6,26 @@ public class TennisGame1 implements TennisGame {
     private int player2_score = 0;
     private boolean isEnd = false;
 
+    private boolean sameScore() {
+        return player1_score == player2_score;
+    }
+
+    private boolean above4Score() {
+        return player1_score >= 4 || player2_score >= 4;
+    }
+
+    private boolean advantageP1() {
+        return player1_score - player2_score == 1;
+    }
+
+    private boolean advantageP2() {
+        return player1_score - player2_score == -1;
+    }
+
+    private boolean winP1() {
+        return player1_score - player2_score >= 2;
+    }
+
     public TennisGame1() {
 
     }
@@ -23,7 +43,7 @@ public class TennisGame1 implements TennisGame {
     public String getLiteralScore() {
         String score = "";
         int tempScore=0;
-        if (player1_score==player2_score)
+        if (sameScore())
         {
             switch (player1_score)
             {
@@ -42,12 +62,13 @@ public class TennisGame1 implements TennisGame {
 
             }
         }
-        else if (player1_score>=4 || player2_score>=4)
+        else if (above4Score())
         {
-            int score_gap = player1_score-player2_score;
-            if (score_gap==1) score ="Advantage player1";
-            else if (score_gap ==-1) score ="Advantage player2";
-            else if (score_gap>=2) {
+            if (advantageP1())
+                score ="Advantage player1";
+            else if (advantageP2())
+                score ="Advantage player2";
+            else if (winP1()) {
                 score = "Win for player1";
                 isEnd = true;
             }
