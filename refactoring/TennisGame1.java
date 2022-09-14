@@ -30,9 +30,9 @@ public class TennisGame1 implements TennisGame {
     }
 
     private List<Score> possibleScores() {
-        return asList(new TieScore(player1, player2), new WinScore(player1, player2),
+        return asList(new DrawScore(player1, player2), new WinScore(player1, player2),
                 new AdvantageScore(player1, player2), new NormalScore(player1, player2),
-                new NullScore(player1, player2));
+                new ZeroScore(player1, player2));
     }
 
     private Player playerFrom(String playerName) {

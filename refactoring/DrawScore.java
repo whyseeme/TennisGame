@@ -3,9 +3,9 @@ package refactoring;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TieScore extends Score {
+public class DrawScore extends Score {
 
-    public TieScore(Player player1, Player player2) {
+    public DrawScore(Player player1, Player player2) {
         super(player1, player2);
     }
 

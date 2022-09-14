@@ -1,8 +1,8 @@
 package refactoring;
 
-public class NullScore extends Score {
+public class ZeroScore extends Score {
 
-    public NullScore(Player player1, Player player2) {
+    public ZeroScore(Player player1, Player player2) {
         super(player1, player2);
     }
 
