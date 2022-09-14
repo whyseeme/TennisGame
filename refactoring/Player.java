@@ -18,7 +18,7 @@ public class Player {
         score++;
     }
 
-    public Boolean isCalled(String name) {
+    public Boolean isName(String name) {
         return this.name == name;
     }
 
@@ -26,17 +26,15 @@ public class Player {
         return name;
     }
 
-    public Boolean hasWonAgainst(Player otherPlayer) {
-        Integer advantageOverOtherPlayer = score - otherPlayer.getScore();
-        return score >= 4 && advantageOverOtherPlayer >= 2;
+    public Boolean isWon(Player player) {
+        return score >= 4 && (score - player.getScore()) >= 2;
     }
 
-    public Boolean hasAdvantageOver(Player otherPlayer) {
-        Integer advantageOverOtherPlayer = score - otherPlayer.getScore();
-        return score >= 4 && advantageOverOtherPlayer.equals(1);
+    public Boolean isAdvantage(Player player) {
+        return score >= 4 && (score - player.getScore()) == 1;
     }
 
-    public Boolean isInATieWith(Player otherPlayer) {
-        return score.equals(otherPlayer.getScore());
+    public Boolean isDraw(Player player) {
+        return score.equals(player.getScore());
     }
 }

@@ -7,8 +7,8 @@ public class AdvantageScore extends Score {
     }
 
     @Override
-    public Boolean isAppliable() {
-        return player1.hasAdvantageOver(player2) || player2.hasAdvantageOver(player1);
+    public Boolean isOK() {
+        return player1.isAdvantage(player2) || player2.isAdvantage(player1);
     }
 
     @Override
@@ -17,6 +17,6 @@ public class AdvantageScore extends Score {
     }
 
     private Player playerInAdvantage() {
-        return player1.hasAdvantageOver(player2) ? player1 : player2;
+        return player1.isAdvantage(player2) ? player1 : player2;
     }
 }

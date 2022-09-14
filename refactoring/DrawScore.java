@@ -9,8 +9,8 @@ public class DrawScore extends Score {
         super(player1, player2);
     }
 
-    public Boolean isAppliable() {
-        return player1.isInATieWith(player2);
+    public Boolean isOK() {
+        return player1.isDraw(player2);
     }
 
     @Override
@@ -23,14 +23,11 @@ public class DrawScore extends Score {
     }
 
     private static final Map<Integer, String> scoreNames() {
-        return new HashMap<Integer, String>() {
-            private static final long serialVersionUID = 1L;
-            {
-                put(0, "Love");
-                put(1, "Fifteen");
-                put(2, "Thirty");
-                put(3, "Forty");
-            }
-        };
+        return new HashMap<Integer, String>() {{
+            put(0, "Love");
+            put(1, "Fifteen");
+            put(2, "Thirty");
+            put(3, "Forty");
+       }};
     }
 }

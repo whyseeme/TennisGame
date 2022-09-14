@@ -6,8 +6,8 @@ public class WinScore extends Score {
         super(player1, player2);
     }
 
-    public Boolean isAppliable() {
-        return player1.hasWonAgainst(player2) || player2.hasWonAgainst(player1);
+    public Boolean isOK() {
+        return player1.isWon(player2) || player2.isWon(player1);
     }
 
     @Override
@@ -16,6 +16,6 @@ public class WinScore extends Score {
     }
 
     private Player playerWhoWon() {
-        return player1.hasWonAgainst(player2) ? player1 : player2;
+        return player1.isWon(player2) ? player1 : player2;
     }
 }

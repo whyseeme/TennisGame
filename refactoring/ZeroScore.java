@@ -7,7 +7,7 @@ public class ZeroScore extends Score {
     }
 
     @Override
-    public Boolean isAppliable() {
+    public Boolean isOK() {
         return true;
     }
 

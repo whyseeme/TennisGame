@@ -10,7 +10,7 @@ public abstract class Score {
         this.player2 = player2;
     }
 
-    public abstract Boolean isAppliable();
+    public abstract Boolean isOK();
 
     @Override
     public abstract String toString();

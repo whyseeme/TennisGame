@@ -1,7 +1,6 @@
 package refactoring;
 
-import static java.util.Arrays.asList;
-
+import java.util.Arrays;
 import java.util.List;
 
 public class TennisGame1 implements TennisGame {
@@ -15,34 +14,33 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        playerFrom(playerName).wonPoint();
+    	if (player1.isName(playerName))
+    		player1.wonPoint();
+    	else 
+    		player2.wonPoint();
     }
 
     public String getLiteralScore() {
 
-        for (Score score : possibleScores()) {
-            if (score.isAppliable()) {
-
+        for (Score score : ScoreLists()) {
+            if (score.isOK()) {
                 return score.toString();
             }
         }
         return "";
     }
 
-    private List<Score> possibleScores() {
-        return asList(new DrawScore(player1, player2), new WinScore(player1, player2),
-                new AdvantageScore(player1, player2), new NormalScore(player1, player2),
-                new ZeroScore(player1, player2));
-    }
-
-    private Player playerFrom(String playerName) {
-        return player1.isCalled(playerName) ? player1 : player2;
+    private List<Score> ScoreLists() {
+    	List<Score> tmpList = Arrays.asList(
+    			new AdvantageScore(player1, player2), new DrawScore(player1, player2),
+    			new NormalScore(player1, player2), new ZeroScore(player1, player2));
+    	return tmpList;
     }
 
     @Override
     public boolean isEnd() {
         Score winScore = new WinScore(player1, player2);
-        return winScore.isAppliable();
+        return winScore.isOK();
     }
 
 }
