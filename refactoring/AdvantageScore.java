@@ -2,6 +2,10 @@ package refactoring;
 
 public class AdvantageScore extends Score {
 
+    private Player playerInAdvantage() {
+        return player1.isAdvantage(player2) ? player1 : player2;
+    }
+
     public AdvantageScore(Player player1, Player player2) {
         super(player1, player2);
     }
@@ -14,9 +18,5 @@ public class AdvantageScore extends Score {
     @Override
     public String toString() {
         return "Advantage " + playerInAdvantage().getName();
-    }
-
-    private Player playerInAdvantage() {
-        return player1.isAdvantage(player2) ? player1 : player2;
     }
 }
