@@ -33,7 +33,7 @@ public class TennisGame1 implements TennisGame {
     private List<Score> ScoreLists() {
     	List<Score> tmpList = Arrays.asList(
     			new AdvantageScore(player1, player2), new DrawScore(player1, player2),
-    			new NormalScore(player1, player2), new ZeroScore(player1, player2));
+    			new NormalScore(player1, player2), new WinScore(player1, player2));
     	return tmpList;
     }
 
