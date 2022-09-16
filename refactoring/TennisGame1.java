@@ -14,8 +14,8 @@ public class TennisGame1 implements TennisGame {
         this.player2 = new Player(player2Name);
 
         ScoreLists = Arrays.asList(
+        		new DrawScore(player1, player2),
                 new NormalScore(player1, player2),
-                new DrawScore(player1, player2),
                 new AdvantageScore(player1, player2),
                 new WinScore(player1, player2));
     }
